@@ -22,6 +22,9 @@ The project setup was done using Vite for its fast build times and efficient dev
 - LocalStorage API to persist favorite heroes between sessions
 - Custom hooks for state and logic separation (e.g. favorites, filters)
 
+I deployed the app with Vercel because it makes publishing projects from GitHub quick and effortless.
+Feel free to explore the Live Demo below!
+
 ## API
 This project uses the Superhero Database API, which provides superhero data through static JSON files:
 
@@ -49,8 +52,10 @@ npm start
 npm build
 ```
 
-## Deployment
-The app is currently not deployed. You can run it locally by following the setup instructions above.
+## 🌐 Live Demo
+The application has been deployed using Vercel for fast and hassle-free deployment from GitHub.
+
+🔗 Live URL: https://superhero-app-react.vercel.app
 
 ## Screenshots
 ![Superhero App Screenshot](./public/screenshots/screenshot.png)
