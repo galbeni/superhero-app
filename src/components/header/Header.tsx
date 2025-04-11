@@ -15,7 +15,7 @@ export const Header = ({ activeTab, setActiveTab }: IHeader ) => {
   };
 
   return (
-    <div className="flex gap-4">
+    <header className="flex gap-4">
       <button 
         onClick={() => switchTab("heroes")} 
         className={`${buttonStyle.base} ${activeTab === "heroes" ? buttonStyle.active : buttonStyle.inactive}`}
@@ -28,6 +28,6 @@ export const Header = ({ activeTab, setActiveTab }: IHeader ) => {
         >
         Favorites
       </button>
-    </div>
+    </header>
   );
 };

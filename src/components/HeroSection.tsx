@@ -48,22 +48,38 @@ export const HeroSection = () => {
           style={{ clipPath: 'polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)' }}>
         </div>
       </div>
-      <div className="flex h-screen min-w-2/5 items-center justify-center">
-        <div className="max-w-full flex-shrink-0 px-4 text-center lg:mx-0 lg:max-w-3xl lg:pt-8">
-          <h1 className="mt-10 text-5xl font-bold tracking-tight text-white sm:text-6xl">
-            <span>Superhero</span>
-            <span className="text-sky-500">App</span>
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Built with ❤️ using React and TypeScript.
-          </p>
-          <div className="mt-5 flex items-center justify-center gap-x-6">
-            <Header
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-            />
+      <div className="flex h-screen min-w-2/5 items-center justify-center flex-col">
+        <div className="flex grow items-center justify-center">
+          <div className="max-w-full flex-shrink-0 px-4 text-center lg:mx-0 lg:max-w-3xl lg:pt-8">
+            <h1 className="mt-10 text-5xl font-bold tracking-tight text-white sm:text-6xl">
+              <span>Superhero</span>
+              <span className="text-sky-500">App</span>
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Built with ❤️ using React and TypeScript.
+            </p>
+            <div className="mt-5 flex items-center justify-center gap-x-6">
+              <Header
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
+            </div>
           </div>
         </div>
+
+        <footer className="pb-4 text-center text-sm text-gray-500">
+          © {new Date().getFullYear()} SuperheroApp by GalBeni. All rights reserved.
+          <br />
+          Data provided by{" "}
+          <a
+            href="https://superheroapi.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sky-400 hover:underline"
+          >
+            SuperHero API
+          </a>.
+        </footer>
       </div>
     </>
   );

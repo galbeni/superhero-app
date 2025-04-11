@@ -1,23 +1,19 @@
 import './App.css';
-import { HeroSection } from './components/HeroSection.tsx';
+import { HeroSection } from './components/HeroSection';
 import { Filter } from './components/Filter';
 import { useHeroesContext } from './context/heroes/useHeroesContext';
 import { useFavoritesContext } from './context/favorites/useFavoritesContext';
 import { useUIContext } from './context/ui/useUIContext';
 import { HeroList } from './components/lists/HeroList';
-import { FavoriteList } from './components/lists/FavoriteList.tsx';
-import { Spinner } from './components/Spinner.tsx';
+import { FavoriteList } from './components/lists/FavoriteList';
 
 function App() {
   const {
-    loading,
     powerstats,
     publishers
   } = useHeroesContext();
 
-  const {
-    favorites
-  } = useFavoritesContext();
+  const { favorites } = useFavoritesContext();
 
   const {
     activeTab,
@@ -30,7 +26,7 @@ function App() {
 
   return (
     <div className="relative isolate overflow-hidden bg-gray-900">
-      <div className="flex h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center flex-col lg:flex-row">
         <HeroSection />
         <div className="flex bg-black w-screen min-h-screen">
           <div className="container ml-auto mr-auto flex flex-col flex-wrap items-start">
@@ -45,11 +41,7 @@ function App() {
                   powerstats={powerstats}
                   resetFilter={resetFilter}
                 />}
-                {loading ? (
-                  <Spinner />
-                ) : (
-                  <HeroList />
-                )}
+                <HeroList />
               </>
             )}
             {activeTab === "favorites" && (
