@@ -74,7 +74,7 @@ The application has been deployed using Vercel for fast and hassle-free deployme
 🔗 Live URL: https://superhero-app-react.vercel.app
 
 ## Screenshots
-![Superhero App Screenshot](./public/screenshots/screenshot.png)
+![Superhero App Screenshot](./public/screenshots/screenshot-1.png)
 
 ## Credits
 API used: [Superhero API](https://akabab.github.io/superhero-api)
