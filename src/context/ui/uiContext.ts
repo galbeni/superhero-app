@@ -8,6 +8,7 @@ export interface UIContextType {
   handleSortChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   heroesPerPage: number;
   resetFilter: () => void;
+  resetSignal: number;
   setActiveTab: (tab: string) => void;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   sortBy: string;

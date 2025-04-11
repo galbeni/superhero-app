@@ -6,6 +6,7 @@ export const UIProvider: React.FC<{ children: React.ReactNode }> = ({ children }
   const [currentPage, setCurrentPage] = useState(1);
   const [filterBy, setFilterBy] = useState('show-all');
   const [sortBy, setSortBy] = useState('default');
+  const [resetSignal, setResetSignal] = useState(0);
 
   const heroesPerPage = 10;
 
@@ -23,6 +24,7 @@ export const UIProvider: React.FC<{ children: React.ReactNode }> = ({ children }
     setFilterBy('show-all');
     setSortBy('default');
     setCurrentPage(1);
+    setResetSignal(prev => prev + 1);
   };
 
   const value = useMemo(() => ({
@@ -30,13 +32,14 @@ export const UIProvider: React.FC<{ children: React.ReactNode }> = ({ children }
     currentPage,
     filterBy,
     heroesPerPage,
+    resetSignal,
     sortBy,
     handleFilterChange,
     handleSortChange,
     resetFilter,
     setActiveTab,
     setCurrentPage
-  }), [activeTab, currentPage, filterBy, heroesPerPage, sortBy]);
+  }), [activeTab, currentPage, filterBy, heroesPerPage, resetSignal, sortBy]);
 
   return (
     <UIContext.Provider value={value}>

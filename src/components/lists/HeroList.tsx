@@ -1,19 +1,26 @@
 import AutoSizer from 'react-virtualized-auto-sizer';
 import InfiniteLoader from 'react-window-infinite-loader';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
+import { useHeroesContext } from '@/context/heroes/useHeroesContext';
 import { useFavoritesContext } from '@/context/favorites/useFavoritesContext';
 import { useFilteredHeroes } from '@/hooks/useFilteredHeroes';
 import { useUIContext } from '@/context/ui/useUIContext';
 import { Card } from '@/components/card/Card';
 import { SkeletonCard } from '@/components/card/SkeletonCard';
-import { IHero } from '@/types';
+import { Spinner } from '@/components/Spinner';
 import { GridConfig } from '@/constants/ui';
+import { IHero } from '@/types';
 
 const { MIN_CARD_WIDTH, ROW_HEIGHT, GAP, LOAD_DELAY } = GridConfig;
 
 export const HeroList = () => {
-  const { setCurrentPage } = useUIContext();
+  const { loading } = useHeroesContext();
+
+  const {
+    resetSignal,
+    setCurrentPage
+  } = useUIContext();
 
   const {
     filteredHeroes,
@@ -27,8 +34,19 @@ export const HeroList = () => {
 
   const columnCountRef = useRef(1);
 
+  const gridRef = useRef<Grid>(null);
+
+  useEffect(() => {
+    if (gridRef.current) {
+      gridRef.current?.scrollToItem({ rowIndex: 0, columnIndex: 0 });
+    }
+  }, [resetSignal]);
+
   return (
-    <div className="w-full h-screen p-5 rounded-[30px]">
+    <div className="w-full h-screen relative p-5 rounded-[30px]">
+      {loading ? (
+        <Spinner />
+      ) : (
       <AutoSizer>
         {({ height, width }) => {
           if (width === 0 || height === 0) return null;
@@ -84,7 +102,10 @@ export const HeroList = () => {
             >
               {({ onItemsRendered, ref }) => (
                 <Grid
-                  ref={ref}
+                  ref={el => {
+                    ref(el);
+                    gridRef.current = el;
+                  }}
                   columnCount={columns}
                   columnWidth={itemWidth + GAP}
                   height={height}
@@ -112,6 +133,7 @@ export const HeroList = () => {
           );
         }}
       </AutoSizer>
+      )}
     </div>
   );
 };

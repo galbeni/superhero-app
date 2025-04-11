@@ -18,7 +18,7 @@ export const Filter = ({
   resetFilter
 }: IFilter) => {
   return (
-    <div className="flex flex-wrap gap-4 justify-center mb-4">
+    <div className="flex flex-wrap gap-4 mt-4 ps-7 justify-center">
       <select
         value={filterBy}
         onChange={handleFilterChange}
@@ -53,7 +53,7 @@ export const Filter = ({
 
       <button
         onClick={resetFilter}
-        className="btn cursor-pointer"
+        className="btn cursor-pointer text-white"
       >
         Reset
       </button>
